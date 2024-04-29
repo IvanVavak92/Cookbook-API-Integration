@@ -10,4 +10,9 @@ public class UserController {
     public String login() {
         return "loginForm";
     }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
 }
