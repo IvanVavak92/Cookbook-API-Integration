@@ -44,4 +44,9 @@ public class UserController {
         userRepo.save(user);
         return "register_success";
     }
+
+    @GetMapping("/home")
+    public String homePage() {
+        return "home";
+    }
 }
