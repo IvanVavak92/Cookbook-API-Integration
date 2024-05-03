@@ -2,6 +2,7 @@ package com.ivan.cookbook.controllers;
 
 import com.ivan.cookbook.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,10 @@ public class UserController {
             // Return the registration form again with the flag set
             return "register";
         }
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
 
         userRepo.save(user);
         return "register_success";
