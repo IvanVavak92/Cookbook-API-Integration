@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
     <title>Title</title>
 </head>
 <body>
-
+<div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <p>Welcome <b><span sec:authentication="principal.fullName"></span></b>></p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+</div>
+<h1>Welcome to the Cookbook!</h1>
+<p>Choose an action:</p>
+<ul>
+    <li><a th:href="@{/search}">Search Meals</a></li>
+    <li><a th:href="@{api/categories}">View Categories</a></li>
+</ul>
 </body>
 </html>

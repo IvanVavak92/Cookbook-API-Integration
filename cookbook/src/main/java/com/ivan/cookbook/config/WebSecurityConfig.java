@@ -44,7 +44,7 @@ public class WebSecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/home", "/api/**").authenticated()
+                        auth.requestMatchers("/home", "/api/**", "/searchMeal", "/search").authenticated()
                                 .anyRequest().permitAll()
                 )
                 .formLogin(formLogin ->
@@ -53,7 +53,7 @@ public class WebSecurityConfig {
                                 .defaultSuccessUrl("/home")
                                 .permitAll()
                 )
-                .logout(logout -> logout.logoutSuccessUrl("/").permitAll())
+                .logout(logout -> logout.logoutSuccessUrl("/login").permitAll())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
