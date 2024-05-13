@@ -18,7 +18,7 @@ public class JwtController {
     @PostMapping("/authenticate")
     public ResponseEntity<AuthResponseDTO> authenticate(@RequestBody AuthRequestDTO authRequest) {
         // Authenticate the user, check credentials, etc.
-        // Assuming you have a method to authenticate the user in your UserRepository
+
 
         // Generate JWT token
         String token = jwtService.generateToken(authRequest.getEmail());
