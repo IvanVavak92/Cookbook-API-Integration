@@ -44,7 +44,7 @@ public class WebSecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/home").authenticated()
+                        auth.requestMatchers("/home", "/api/**").authenticated()
                                 .anyRequest().permitAll()
                 )
                 .formLogin(formLogin ->
