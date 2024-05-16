@@ -2,8 +2,9 @@
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
-    <title>Home</title>
+    <title>Categories</title>
 </head>
 <body>
 <div class="container text-center">
@@ -14,11 +15,16 @@
         </form>
     </div>
 </div>
-<h1>Welcome to the Cookbook!</h1>
-
+<h1>Categories</h1>
 <ul>
-    <li><a th:href="@{/search}">Search Meals</a></li>
-    <li><a th:href="@{/categories}">View Categories</a></li>
+    <!-- Iterate over categories and display name and description -->
+    <th:block th:each="category : ${categories}">
+        <li>
+            <h2 th:text="${category.strCategory}"></h2>
+            <p th:text="${category.strCategoryDescription}"></p>
+        </li>
+    </th:block>
 </ul>
+<a href="/home" class="back-button">Back to Home</a>
 </body>
 </html>
